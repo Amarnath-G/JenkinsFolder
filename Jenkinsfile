@@ -17,14 +17,14 @@ pipeline {
             steps {
                 git url:'https://github.com/Amarnath-G/${repo_name}.git',branch:'main',credentialsId:'github-cred'
                 
-                script{
-                if(repo_name=="mern-app_server"){
-                    env.service_name="server"
-                }
-                else{
-                    env.service_name="client"
-                }
-            }
+            //     script{
+            //     if(repo_name=="mern-app_server"){
+            //         env.service_name="server"
+            //     }
+            //     else{
+            //         env.service_name="client"
+            //     }
+            // }
             }
             
         }
@@ -58,8 +58,8 @@ pipeline {
                     echo "scp completed"
                     ssh -o StrictHostKeyChecking=no -i $SSH_KEY $EC2_HOST '
                         cd $REMOTE_APP_PATH &&
-                        docker compose pull $service_name &&
-                        docker compose up -d $service_name &&
+                        docker compose pull $repo_name &&
+                        docker compose up -d $repo_name &&
                         echo "Running $repo_name &&
                         docker ps
                     '
