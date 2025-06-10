@@ -58,7 +58,6 @@ pipeline {
                     echo "scp completed"
                     ssh -o StrictHostKeyChecking=no -i $SSH_KEY $EC2_HOST '
                         cd $REMOTE_APP_PATH &&
-                        docker login -u ${DOCKERHUB_USER} -p ${DOCKER_PASS} &&
                         docker compose pull $service_name &&
                         docker compose up -d $service_name &&
                         echo "Running $repo_name &&
