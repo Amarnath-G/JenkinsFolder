@@ -53,7 +53,7 @@ pipeline {
                     sh """
                     echo "scp entering"
 
-                    scp -i $SSH_KEY docker-compose.yml $EC2_HOST:$REMOTE_APP_PATH
+                    scp -o StrictHostKeyChecking=no -i $SSH_KEY docker-compose.yml $EC2_HOST:$REMOTE_APP_PATH
 
                     echo "scp completed"
                     ssh -o StrictHostKeyChecking=no -i $SSH_KEY $EC2_HOST '
