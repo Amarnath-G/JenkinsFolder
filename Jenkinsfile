@@ -51,8 +51,11 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: "${PRIVATE_KEY}", variable: 'SSH_KEY')]) {
                     sh """
-                    scp -i $SSH_KEY docker-compose.yml $EC2_HOST:$REMOTE_APP_PATH/docker-compose.yml
+                    echo "scp entering"
 
+                    scp -i $SSH_KEY docker-compose.yml $EC2_HOST:$REMOTE_APP_PATH
+
+                    echo "scp completed"
                     ssh -o StrictHostKeyChecking=no -i $SSH_KEY $EC2_HOST '
                         cd $REMOTE_APP_PATH &&
                         docker login -u ${DOCKERHUB_USER} -p ${DOCKER_PASS} &&
