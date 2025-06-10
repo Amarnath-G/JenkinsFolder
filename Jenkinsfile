@@ -60,7 +60,7 @@ pipeline {
                         cd $REMOTE_APP_PATH &&
                         docker compose pull $repo_name &&
                         docker compose up -d $repo_name &&
-                        echo "Running $repo_name &&
+                        echo "Running $repo_name" &&
                         docker ps
                     '
                     """
