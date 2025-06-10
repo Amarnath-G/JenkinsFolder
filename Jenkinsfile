@@ -15,10 +15,10 @@ pipeline {
         stage('Clone Repository') {
             
             steps {
-                sh 'git clone https://github.com/Amarnath-G/${repo_name}.git'
+                git url:'https://github.com/Amarnath-G/${repo_name}.git',branch:'main',credentialsId:'github-cred'
                 
                 script{
-                if(${repo_name}=="mern-app_server"){
+                if(repo_name=="mern-app_server"){
                     env.service_name="server"
                 }
                 else{
