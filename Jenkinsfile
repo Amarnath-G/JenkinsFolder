@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKERHUB_USER = 'amarnath2413'
         IMAGE_NAME = "${DOCKERHUB_USER}/${repo_name}"
-        PRIVATE_KEY = 'private_key' // Jenkins Credential ID (SSH private key)
+        //PRIVATE_KEY = 'private_key'// Jenkins Credential ID (SSH private key)
         EC2_HOST = 'ec2-user@16.170.254.164'
         REMOTE_APP_PATH = '/home/ec2-user/img-building'
         service_name=""
@@ -49,7 +49,7 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                withCredentials([file(credentialsId: "${PRIVATE_KEY}", variable: 'SSH_KEY')]) {
+                withCredentials([file(credentialsId: 'private_key', variable: 'SSH_KEY')]) {
                     sh """
                     echo "scp entering"
 
