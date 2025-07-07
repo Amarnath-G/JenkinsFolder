@@ -9,7 +9,7 @@ services:
     environment:
       - PORT=3000
       - HOST=0.0.0.0
-      - REACT_APP_YOUR_HOSTNAME=http://13.49.228.146:5000
+      - REACT_APP_YOUR_HOSTNAME=http://13.61.15.33:5000
   mern-app_server:
     build: .
     image: amarnath2413/mern-app_server
