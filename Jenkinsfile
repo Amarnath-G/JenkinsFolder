@@ -6,7 +6,7 @@ pipeline {
         IMAGE_NAME = "${DOCKERHUB_USER}/${repo_name}"
         //PRIVATE_KEY = 'private_key'// Jenkins Credential ID (SSH private key)
         EC2_HOST = 'ec2-user@13.61.15.33'
-        REMOTE_APP_PATH = '/home/ec2-user/img-building'
+        REMOTE_APP_PATH = '/home/ec2-user/img-building/'
         service_name=""
     }
 
